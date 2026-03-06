@@ -8,7 +8,7 @@ const rateLimit = require("express-rate-limit");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
-const notFound = require("./middlewares/notFound");
+
 const userRoutes = require("./routes/userRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 
@@ -36,7 +36,8 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/events", eventRoutes);
-app.use(notFound);
+
+
 // app.use("/api/v1/product-reviews", reviewProductRoutes);
 
 app.use(errorHandler);
