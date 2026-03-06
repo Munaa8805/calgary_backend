@@ -1,15 +1,2 @@
 /node_modules
-/dist
-/build
-/public
-/src
-/test
-/docs
-/logs
-/cache
-/temp
-/backup
-/config
-/database
-/models
 .env
