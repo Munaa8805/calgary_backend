@@ -1,0 +1,95 @@
+const asyncHandler = require("../utils/asyncHandler");
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+
+/**
+ * Registers a new user.
+ */
+const register = asyncHandler(async (req, res) => {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+        return res
+            .status(400)
+            .json({ success: false, message: "All fields are required" });
+    }
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+        return res
+            .status(400)
+            .json({ success: false, message: "User already exists" });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await User.create({ name, email, password: hashedPassword });
+    sendTokenResponse(newUser, 201, req, res);
+});
+
+/**
+ * Logs in a user.
+ */
+const login = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res
+            .status(400)
+            .json({ success: false, message: "All fields are required" });
+    }
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return res
+            .status(400)
+            .json({ success: false, message: "Invalid credentials" });
+    }
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+        return res
+            .status(400)
+            .json({ success: false, message: "Invalid credentials" });
+    }
+    sendTokenResponse(user, 200, req, res);
+});
+
+/**
+ * Logs out the current user.
+ */
+const logout = asyncHandler(async (req, res) => {
+    res
+        .cookie("bazaar_token", "", {
+            expires: new Date(Date.now() - 1000),
+            httpOnly: process.env.NODE_ENV === "production",
+            secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+            sameSite: "strict",
+        })
+        .json({ success: true, message: "Logged out successfully" });
+});
+
+
+
+
+// NOTE: forgotPassword flow is intentionally not implemented yet.
+// When implemented, it should:
+// - Accept an email
+// - Generate a secure, time-limited reset token
+// - Send a reset link via email
+// - Provide a separate endpoint to set a new password using the token
+const signToken = (_id) => {
+    return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
+
+const sendTokenResponse = (user, statusCode, req, res) => {
+    const token = signToken(user._id);
+    res.cookie("calgary_token", token, {
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        httpOnly: process.env.NODE_ENV === "production",
+        secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+        sameSite: "strict",
+    });
+    user.password = "********";
+    res.status(statusCode).json({
+        success: true,
+        token,
+        user: user
+    });
+};
+
+module.exports = { register, login, logout, };
