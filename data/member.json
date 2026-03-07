@@ -1,0 +1,255 @@
+[
+    {
+      "name": "John Smith",
+      "address": "123 Maple Street",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A12",
+      "country": "Canada",
+      "phone": "4035551001",
+      "email": "johnsmith@example.com",
+      "occupation": "Engineer",
+      "age": 38,
+      "gender": "male",
+      "education": "Bachelor Degree",
+      "members": [
+        {
+          "name": "Anna Smith",
+          "relationship": "wife",
+          "age": 35,
+          "gender": "female",
+          "phone": "4035551002",
+          "email": "anna@example.com",
+          "notes": "Teacher"
+        },
+        {
+          "name": "Lucas Smith",
+          "relationship": "child",
+          "age": 10,
+          "gender": "male"
+        }
+      ]
+    },
+    {
+      "name": "Michael Johnson",
+      "address": "45 Oak Avenue",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A13",
+      "country": "Canada",
+      "phone": "4035551003",
+      "email": "michael@example.com",
+      "occupation": "Manager",
+      "age": 42,
+      "gender": "male",
+      "education": "MBA",
+      "members": [
+        {
+          "name": "Laura Johnson",
+          "relationship": "wife",
+          "age": 40,
+          "gender": "female"
+        },
+        {
+          "name": "Emily Johnson",
+          "relationship": "child",
+          "age": 14,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "David Lee",
+      "address": "78 Pine Road",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A14",
+      "country": "Canada",
+      "phone": "4035551004",
+      "email": "davidlee@example.com",
+      "occupation": "Designer",
+      "age": 33,
+      "gender": "male",
+      "education": "College Diploma",
+      "members": [
+        {
+          "name": "Sophia Lee",
+          "relationship": "wife",
+          "age": 31,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "Robert Brown",
+      "address": "90 Cedar Lane",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A15",
+      "country": "Canada",
+      "phone": "4035551005",
+      "email": "robert@example.com",
+      "occupation": "Doctor",
+      "age": 45,
+      "gender": "male",
+      "education": "Medical Degree",
+      "members": [
+        {
+          "name": "Linda Brown",
+          "relationship": "wife",
+          "age": 43,
+          "gender": "female"
+        },
+        {
+          "name": "Daniel Brown",
+          "relationship": "child",
+          "age": 15,
+          "gender": "male"
+        }
+      ]
+    },
+    {
+      "name": "James Wilson",
+      "address": "12 Birch Street",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A16",
+      "country": "Canada",
+      "phone": "4035551006",
+      "email": "james@example.com",
+      "occupation": "Teacher",
+      "age": 37,
+      "gender": "male",
+      "education": "Bachelor Degree",
+      "members": [
+        {
+          "name": "Olivia Wilson",
+          "relationship": "wife",
+          "age": 34,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "Kevin Martinez",
+      "address": "56 Spruce Drive",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A17",
+      "country": "Canada",
+      "phone": "4035551007",
+      "email": "kevin@example.com",
+      "occupation": "Driver",
+      "age": 40,
+      "gender": "male",
+      "education": "High School",
+      "members": [
+        {
+          "name": "Maria Martinez",
+          "relationship": "wife",
+          "age": 38,
+          "gender": "female"
+        },
+        {
+          "name": "Carlos Martinez",
+          "relationship": "child",
+          "age": 12,
+          "gender": "male"
+        }
+      ]
+    },
+    {
+      "name": "Andrew Taylor",
+      "address": "67 Willow Way",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A18",
+      "country": "Canada",
+      "phone": "4035551008",
+      "email": "andrew@example.com",
+      "occupation": "Lawyer",
+      "age": 41,
+      "gender": "male",
+      "education": "Law Degree",
+      "members": [
+        {
+          "name": "Grace Taylor",
+          "relationship": "wife",
+          "age": 39,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "Daniel Harris",
+      "address": "88 Aspen Circle",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A19",
+      "country": "Canada",
+      "phone": "4035551009",
+      "email": "daniel@example.com",
+      "occupation": "Chef",
+      "age": 36,
+      "gender": "male",
+      "education": "Culinary School",
+      "members": [
+        {
+          "name": "Natalie Harris",
+          "relationship": "wife",
+          "age": 34,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "Brian Walker",
+      "address": "22 River Road",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A20",
+      "country": "Canada",
+      "phone": "4035551010",
+      "email": "brian@example.com",
+      "occupation": "Pilot",
+      "age": 44,
+      "gender": "male",
+      "education": "Aviation Degree",
+      "members": [
+        {
+          "name": "Emma Walker",
+          "relationship": "wife",
+          "age": 41,
+          "gender": "female"
+        }
+      ]
+    },
+    {
+      "name": "Steven Clark",
+      "address": "10 Lake View",
+      "city": "Calgary",
+      "state": "AB",
+      "zip": "T2A21",
+      "country": "Canada",
+      "phone": "4035551011",
+      "email": "steven@example.com",
+      "occupation": "Developer",
+      "age": 32,
+      "gender": "male",
+      "education": "Computer Science",
+      "members": [
+        {
+          "name": "Chloe Clark",
+          "relationship": "wife",
+          "age": 30,
+          "gender": "female"
+        },
+        {
+          "name": "Liam Clark",
+          "relationship": "child",
+          "age": 5,
+          "gender": "male"
+        }
+      ]
+    }
+  ]

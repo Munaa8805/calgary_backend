@@ -8,10 +8,11 @@ const rateLimit = require("express-rate-limit");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/errorHandler");
 const authRoutes = require("./routes/authRoutes");
-
+const residenceRoutes = require("./routes/residenceRoutes");
 const userRoutes = require("./routes/userRoutes");
 const eventRoutes = require("./routes/eventRoutes");
-
+const messageRoutes = require("./routes/messageRoute");
+const volunteerRoutes = require("./routes/volunteerRoute");
 dotenv.config();
 
 const app = express();
@@ -36,9 +37,11 @@ app.use(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/events", eventRoutes);
+app.use("/api/v1/messages", messageRoutes);
+app.use("/api/v1/residences", residenceRoutes);
+app.use("/api/v1/volunteers", volunteerRoutes);
 
 
-// app.use("/api/v1/product-reviews", reviewProductRoutes);
 
 app.use(errorHandler);
 
