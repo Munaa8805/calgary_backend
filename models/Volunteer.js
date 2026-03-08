@@ -13,7 +13,7 @@ const VolunteerModel = new mongoose.Schema({
         type: String,
         required: true,
     },
-    address: {
+    position: {
         type: String,
         required: true,
     },
