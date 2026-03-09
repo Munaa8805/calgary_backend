@@ -18,10 +18,6 @@ const deleteVolunteer = asyncHandler(async (req, res) => {
         return res.status(400).json({ success: false, message: "Volunteer ID is required" });
     }
 
-    if (req.user.role !== "admin") {
-        return res.status(401).json({ success: false, message: "You are not authorized to delete this volunteer" });
-    }
-
     const volunteer = await Volunteer.findById(volunteerId);
     if (!volunteer) {
         return res.status(404).json({ success: false, message: "Volunteer not found" });
