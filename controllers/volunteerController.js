@@ -7,7 +7,24 @@ const getVolunteers = asyncHandler(async (req, res) => {
 });
 
 const createVolunteer = asyncHandler(async (req, res) => {
-    const volunteer = await Volunteer.create(req.body);
+    const { name, email, phone, position, special = false } = req.body;
+    if (!name || !email || !phone || !position) {
+        return res.status(400).json({ success: false, message: "All fields are required" });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(400).json({ success: false, message: "Please enter a valid email address !!!" });
+    }
+    if (phone.length !== 10) {
+        return res.status(400).json({ success: false, message: "Please enter a valid phone number" });
+    }
+    if (position.length < 3) {
+        return res.status(400).json({ success: false, message: "Please enter a valid position" });
+    }
+    if (special !== true && special !== false) {
+        return res.status(400).json({ success: false, message: "Please enter a valid special" });
+    }
+    const volunteer = await Volunteer.create({ name, email, phone, position, special });
     res.status(201).json({ success: true, volunteer });
 });
 
