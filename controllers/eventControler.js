@@ -67,4 +67,9 @@ const getEventById = asyncHandler(async (req, res) => {
     res.status(200).json({ success: true, event });
 });
 
-module.exports = { getEvents, createEvent, updateEvent, deleteEvent, getEventById };
+const getFeaturedEvents = asyncHandler(async (req, res) => {
+    const events = await Event.find({ featured: true }).populate("organizer", "name");
+    res.status(200).json({ success: true, events });
+});
+
+module.exports = { getEvents, createEvent, updateEvent, deleteEvent, getEventById, getFeaturedEvents };

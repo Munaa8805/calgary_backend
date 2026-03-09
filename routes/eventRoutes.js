@@ -4,6 +4,7 @@ const eventController = require("../controllers/eventControler");
 const { protect } = require("../middlewares/auth");
 
 router.get("/", eventController.getEvents);
+router.get("/featured", eventController.getFeaturedEvents);
 router.post("/", protect, eventController.createEvent);
 router.put("/:id", protect, eventController.updateEvent);
 router.delete("/:id", protect, eventController.deleteEvent);
