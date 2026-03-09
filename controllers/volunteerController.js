@@ -13,7 +13,7 @@ const createVolunteer = asyncHandler(async (req, res) => {
 
 
 const deleteVolunteer = asyncHandler(async (req, res) => {
-    const volunteerId = req.body
+    const volunteerId = req.params.id;
     if (!volunteerId) {
         return res.status(400).json({ success: false, message: "Volunteer ID is required" });
     }
