@@ -16,23 +16,23 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
+        required: false,
     },
     address: {
         type: String,
-        required: true,
+        required: false,
     },
     city: {
         type: String,
-        required: true,
+        required: false,
     },
     state: {
         type: String,
-        required: true,
+        required: false,
     },
     zip: {
         type: String,
-        required: true,
+        required: false,
     },
     role: {
         type: String,
