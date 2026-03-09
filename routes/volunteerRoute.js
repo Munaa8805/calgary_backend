@@ -4,6 +4,7 @@ const volunteerController = require("../controllers/volunteerController");
 const { protect, restrictTo } = require("../middlewares/auth");
 
 router.get("/", volunteerController.getVolunteers);
+router.get("/special", volunteerController.getSpecialVolunteers);
 router.post("/", protect, restrictTo("admin"), volunteerController.createVolunteer);
 router.delete("/", protect, restrictTo("admin"), volunteerController.deleteVolunteer);
 router.put("/", protect, restrictTo("admin"), volunteerController.updateVolunteer);

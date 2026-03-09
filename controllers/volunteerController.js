@@ -54,4 +54,10 @@ const updateVolunteer = asyncHandler(async (req, res) => {
     res.status(200).json({ success: true, message: "Volunteer updated successfully", volunteer });
 });
 
-module.exports = { getVolunteers, createVolunteer, deleteVolunteer, updateVolunteer };
+
+const getSpecialVolunteers = asyncHandler(async (req, res) => {
+    const volunteers = await Volunteer.find({ special: true });
+    res.status(200).json({ success: true, volunteers });
+});
+
+module.exports = { getVolunteers, createVolunteer, deleteVolunteer, updateVolunteer, getSpecialVolunteers };

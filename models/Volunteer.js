@@ -17,6 +17,10 @@ const VolunteerModel = new mongoose.Schema({
         type: String,
         required: true,
     },
+    special: {
+        type: Boolean,
+        default: false,
+    }
 }, { timestamps: true });
 
 const Volunteer = mongoose.model("Volunteer", VolunteerModel);
