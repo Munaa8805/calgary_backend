@@ -8,7 +8,7 @@ const getEvents = asyncHandler(async (req, res) => {
 
 const createEvent = asyncHandler(async (req, res) => {
 
-    const { name, description, date, location, time } = req.body;
+    const { name, description, date, location, time, featured } = req.body;
     if (!name || !description || !date || !location || !time) {
         return res.status(400).json({ success: false, message: "All fields are required" });
     }
@@ -16,15 +16,16 @@ const createEvent = asyncHandler(async (req, res) => {
         return res.status(400).json({ success: false, message: "Date cannot be in the past" });
     }
     const event = await Event.create({
-        name, description, date, location, time, organizer: req.user._id
+        name, description, date, location, time, organizer: req.user._id, featured
     });
     res.status(201).json({ success: true, event });
 });
 
 const updateEvent = asyncHandler(async (req, res) => {
 
-    const { title, description, date, location, time } = req.body;
 
+    const { name, description, date, location, time, featured } = req.body;
+    // console.log("req.body", featured);
     if (date < new Date()) {
         return res.status(400).json({ success: false, message: "Date cannot be in the past" });
     }
@@ -35,16 +36,16 @@ const updateEvent = asyncHandler(async (req, res) => {
         return res.status(404).json({ success: false, message: "Event not found" });
     }
 
-    if (event.organizer.toString() !== req.user._id.toString()) {
-        return res.status(401).json({ success: false, message: "You are not authorized to update this event" });
-    }
 
-    event.title = title || event.title;
-    event.description = description || event.description;
-    event.date = date || event.date;
-    event.location = location || event.location;
-    event.time = time || event.time;
+    event.name = name ?? event.name;
+    event.description = description ?? event.description;
+    event.date = date ?? event.date;
+    event.location = location ?? event.location;
+    event.time = time ?? event.time;
     event.updatedAt = Date.now();
+    event.organizer = req.user._id;
+    event.featured = typeof featured === "boolean" ? featured : event.featured;
+    // console.log("event", event);
     await event.save();
 
     res.status(200).json({ success: true, message: "Event updated successfully", event });
@@ -55,15 +56,13 @@ const deleteEvent = asyncHandler(async (req, res) => {
     if (!event) {
         return res.status(404).json({ success: false, message: "Event not found" });
     }
-    if (event.organizer.toString() !== req.user._id.toString() && req.user.role !== "admin") {
-        return res.status(401).json({ success: false, message: "You are not authorized to delete this event" });
-    }
+
     await event.deleteOne();
     res.status(200).json({ success: true, message: "Event deleted successfully" });
 });
 
 const getEventById = asyncHandler(async (req, res) => {
-    const event = await Event.findById(req.params.id);
+    const event = await Event.findById(req.params.id).populate("organizer", "name");
     res.status(200).json({ success: true, event });
 });
 

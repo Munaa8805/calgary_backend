@@ -4,18 +4,21 @@ const eventSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        trim: true,
     },
     description: {
         type: String,
         required: true,
+        trim: true,
     },
     date: {
         type: Date,
-        required: true,
+        required: true, trim: true,
     },
     location: {
         type: String,
         required: true,
+        trim: true,
     },
     image: {
         type: String,
@@ -24,6 +27,7 @@ const eventSchema = new mongoose.Schema({
     time: {
         type: String,
         required: true,
+        trim: true,
     },
     organizer: {
         type: mongoose.Schema.Types.ObjectId,
